@@ -17,6 +17,7 @@
   
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="../js/jquery-color"></script>
 <link rel="stylesheet" type="text/css" href="../css/style.css">
 </head>
 <body>
@@ -43,81 +44,59 @@ Pendant deux minutes, je me suis laissée doigter ma chatte dans le métro de Ba
 
 Pour m’achever, le vieux monsieur, à son tour, a pris l’initiative et s’est aventuré d’une main dans mon décolleté. Il a réussi à glisser deux doigts sous le bonnet du soutif et à me pincer le téton. Pas compliqué avec ce genre de soutien gorge, d’ailleurs.  Nathalie s’est collée encore plus à moi pour nous protéger d’autres regards malveillants.  Je me sentais comme un insecte,  épinglée par devant et par derrière… Je me sentais aux anges !
 </p>
+<script type="text/javascript">
 
+  $('p').animate({
 
-    
-  </p>
+    fontSize : ['15px','linear'], // cette propriéte s'animera de façon linéaire
+    width : '200px ' // les autres s'animeront de la façon définie ensuite :swing
 
-
-  </div>
-  <script type="text/javascript">
-    $('p').animate({
-
-      width : '500px',
-      fontSize : '15px',//ne pas oublier la syntaxe de l'identifiant !
-      marginTop : '185px'
-    });
-
-    /*-------------------------------------------------------------------*/
-
-    $('p').animate({
-      width : '450px'
-    },'fast'); // prmier exemple avec la valeur fast (200ms)
-
-    $('p').animate({
-
-      width : '450px'
-    },1000); // second exemple avec 1000ms (=1s)
-
+  }, 'swing');
 
 $('p').animate({
-
-  width : '800px'
-},'linear'); // l'animation se derourelera de façon linéaire 
-
-$('p').animate({
-  width : '650px'
-},function(){
-
-  alert('Animation terminée !');
-})
-
-$('p').animate({
-
-  width : '450px'
-
-},1000, 'linear',function(){
-
-  alert('Coucou c\est terminée !');
-
+  width : '+=50px',// ajoute 50px à la largeur
+  heigth : '-=50px' // enleve 20px à la hauteur
 });
-
-// ce code est égal à celui-ci :
-$('p').animate({
-  width : '650px'
-},{
-  duration : 1000,
-  easing : 'linear',
-  complete : function(){
-    alert('Animation terminée  putain !');
-  }
-
-});
-
-
-$('p').animate({
-  width : '400px'
-
-},{ duration : 1000,
-  queue : false})
-.animate({
-  fontSize :'30px'
-}, 1000);
-
-// les deux animations se lanceront en même temps
-  </script>
-}
   
+  $('p').animate({
+
+    width :'show'// anime la largeur pour afficher le paragraphe
+  });
+
+  $('p').animate({
+    width: 'hide'//anime la largeur pour cacher le paragraphe
+  });
+
+  $('p').animate({
+
+    width :'toggle' // anime la largeur pour cacher ou afficher le paragraphe 
+
+  });
+
+  $('p').hide('slow'); // cache le pargraphe en 600ms
+  
+  $('p').show('fast',function(){
+
+    alert('paragraphe affiché ! ');
+
+  }); // affiche le paragraphe en 200ms, et lance une alerte à la fin de l'animation 
+
+  $('p').fadeTo('normal',0.5); // ajuste l'opacité et la fixe à 0.5
+  $('p').fadeOut();
+  $('p').fadeIn();
+  $('p').slideUp();
+  $('p').slideDown();
+
+  var fileAttente = $('p').queue('fx'); //je stoke la file d'attente, le tableau, dans une variable
+  alert(fileAttente.length); // renvoie 4
+
+
+$('p').each( function(){
+    alert( $(this).text() ); // $(this) représente l'objet courant
+} );
+
+
+
+</script>
 </body>
 </html>
-
